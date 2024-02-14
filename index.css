@@ -2,6 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(249, 248, 248);
 }
 
 body,
@@ -56,11 +57,13 @@ span {
     box-sizing: border-box;
     border-radius: 0.15rem;
     cursor: grab;
+    transition: all linear 100ms;
 }
 
 .box:hover {
     border: 1px solid black;
-    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
 }
 
 .box:active,

@@ -1,6 +1,7 @@
 const span = document.querySelector('span');
 const button = document.querySelector('button');
 const boxes = document.querySelectorAll('.box');
+const h3 = document.querySelector('h3');
 
 // 1. Randomizer function.
 
@@ -29,6 +30,7 @@ const pickBox = () => {
     tries = 3;
     span.innerText = boxes[chosen].style.backgroundColor;
     span.style.color = 'black';
+    h3.innerText = `Let's test your prowess, choose one of the boxes that's the color of the RGB text (You got ${tries} tries)`;
 };
 
 const colorBox = () => {
@@ -69,11 +71,15 @@ function lose() {
     span.style.color = 'red';
     for (const [ind, box] of boxes.entries()) {
         if (ind !== chosen) {
-            box.style.opacity = 0.25;
+            box.removeEventListener('');
         } else {
             box.style.border = '1px solid red';
         }
     }
+}
+
+function picked() {
+    this.style.opacity = 0.25;
 }
 
 // 8. Declaration of play function and initialization
@@ -86,6 +92,15 @@ function play() {
             } else {
                 this.style.opacity = 0.25;
                 tries--;
+
+                h3.innerText = `Let's test your prowess, choose one of the boxes that's the color of the RGB text (You got ${
+                    tries +
+                    (tries === 1
+                        ? ' try'
+                        : tries === 0
+                        ? ' - no tries left'
+                        : ' tries')
+                })`;
                 if (tries === 0) {
                     lose();
                 }
